@@ -1,6 +1,7 @@
 package com.wavus.edu.mvcrequestlifecycle.viewResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
@@ -11,7 +12,13 @@ import java.util.Locale;
 @Component
 public class LoggingViewResolver implements ViewResolver {
     private static final Logger logger = LoggerFactory.getLogger(LoggingViewResolver.class);
-    private final InternalResourceViewResolver delegate = new InternalResourceViewResolver();
+    private final InternalResourceViewResolver delegate;
+
+    @Autowired
+    public LoggingViewResolver(InternalResourceViewResolver delegate) {
+        this.delegate = delegate;
+    }
+
 
     @Override
     public View resolveViewName(String viewName, Locale locale) throws Exception {

@@ -1,5 +1,6 @@
 package com.wavus.edu.mvcrequestlifecycle.argumentResolver;
 import com.wavus.edu.mvcrequestlifecycle.dto.MyCustomDto;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.MethodParameter;
@@ -15,6 +16,7 @@ public class LoggingArgumentResolver implements HandlerMethodArgumentResolver {
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
+        System.out.println("✅ supportsParameter 호출됨: " + parameter.getParameterType());
         return parameter.getParameterType().equals(MyCustomDto.class);
     }
 

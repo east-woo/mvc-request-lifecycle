@@ -1,18 +1,12 @@
 package com.wavus.edu.mvcrequestlifecycle.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class MyCustomDto {
     private String myParam;
-
-    public MyCustomDto(String myParam) {
-        this.myParam = myParam;
-    }
-
-    public String getMyParam() {
-        return myParam;
-    }
-
-    @Override
-    public String toString() {
-        return "MyCustomDto{myParam='" + myParam + "'}";
-    }
 }
