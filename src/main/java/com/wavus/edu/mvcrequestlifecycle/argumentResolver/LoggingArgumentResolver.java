@@ -16,7 +16,6 @@ public class LoggingArgumentResolver implements HandlerMethodArgumentResolver {
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        System.out.println("✅ supportsParameter 호출됨: " + parameter.getParameterType());
         return parameter.getParameterType().equals(MyCustomDto.class);
     }
 

@@ -12,28 +12,16 @@ import org.springframework.web.bind.annotation.*;
 public class TestController {
     private static final Logger logger = LoggerFactory.getLogger(TestController.class);
 
-    @GetMapping("/test")
-    public ResponseEntity<String> testMethod(@RequestParam String myParam) {
-        return ResponseEntity.ok("요청 처리 완료: " + myParam);
-    }
-
     // 예시 요청 URL: /hello
     @GetMapping("/hello")
-    public String sayHello(Model model) {
+    public String modelhelloPage(Model model) {
         logger.info("🔹 [Controller] /hello 요청 받음");
-        // 모델에 데이터를 추가하여 뷰로 전달
         model.addAttribute("message", "Hello, Spring MVC!");
         return "hello";
     }
 
-    @PostMapping("/test/post")
-    public ResponseEntity<String> testPostMethod(@RequestBody MyCustomDto dto) {
-        logger.info("🔹 [Controller] 요청 처리 중...{}", dto);
-        return ResponseEntity.ok("요청 처리 완료: " + dto);
-    }
-
-    @PostMapping("/test/post1")
-    public ResponseEntity<String> testPostMethod1(@ModelAttribute MyCustomDto dto) {
+    @PostMapping("/api/post")
+    public ResponseEntity<String> testPostMethod(MyCustomDto dto) {
         logger.info("🔹 [Controller] 요청 처리 중...{}", dto);
         return ResponseEntity.ok("요청 처리 완료: " + dto);
     }
