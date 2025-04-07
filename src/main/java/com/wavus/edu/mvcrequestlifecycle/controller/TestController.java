@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 public class TestController {
     private static final Logger logger = LoggerFactory.getLogger(TestController.class);
 
-    // 예시 요청 URL: /hello
     @GetMapping("/hello")
     public String modelhelloPage(Model model) {
         logger.info("🔹 [Controller] /hello 요청 받음");

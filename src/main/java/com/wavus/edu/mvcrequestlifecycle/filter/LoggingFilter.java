@@ -1,6 +1,7 @@
 package com.wavus.edu.mvcrequestlifecycle.filter;
 
 import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 @Component
+@WebFilter
 public class LoggingFilter implements Filter {
     private static final Logger logger = LoggerFactory.getLogger(LoggingFilter.class);
 

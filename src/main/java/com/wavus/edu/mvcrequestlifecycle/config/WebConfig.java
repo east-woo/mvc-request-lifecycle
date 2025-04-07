@@ -1,5 +1,6 @@
 package com.wavus.edu.mvcrequestlifecycle.config;
 
+import com.wavus.edu.mvcrequestlifecycle.argumentResolver.CurrentUserArgumentResolver;
 import com.wavus.edu.mvcrequestlifecycle.argumentResolver.LoggingArgumentResolver;
 import com.wavus.edu.mvcrequestlifecycle.interceptor.LoggingInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,6 @@ public class WebConfig implements WebMvcConfigurer {
                      ApplicationContext applicationContext) {
         this.loggingArgumentResolver = loggingArgumentResolver;
         this.loggingInterceptor = loggingInterceptor;
-
-        // 빈 등록 확인
-        System.out.println("🔎 LoggingArgumentResolver 존재 여부: " + applicationContext.containsBean("loggingArgumentResolver"));
     }
 
     @Override
@@ -36,5 +34,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
         resolvers.add(0,loggingArgumentResolver);
+
+        resolvers.add(1, new CurrentUserArgumentResolver());
     }
 }
